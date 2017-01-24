@@ -3,14 +3,13 @@ interface IDomElement {
 }
 
 class DomElement implements IDomElement {
-  elementName : string;
+  tagName : string;
   textContent: string;
   elements: IDomElement[];
 
-  constructor(elementName : string, textContent?: string) {
-    this.elementName = elementName;
+  constructor(elementName : string) {
+    this.tagName = elementName;
     this.elements = [];
-    this.textContent = textContent;
   }
 
   add(element: IDomElement) {
@@ -18,14 +17,11 @@ class DomElement implements IDomElement {
   }
 
   print() {
-    console.log(`<${this.elementName}>`);
-    if (this.textContent) {
-      console.log(this.textContent);
-    }
+    console.log(`<${this.tagName}>`);
     for (let element of this.elements) {
       element.print();
     }
-    console.log(`</${this.elementName}>`);
+    console.log(`</${this.tagName}>`);
   }
 }
 
